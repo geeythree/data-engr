@@ -1,7 +1,4 @@
-from time import time
-import wikipedia
 import json
-import re
 import argparse
 from bs4 import BeautifulSoup
 import requests
