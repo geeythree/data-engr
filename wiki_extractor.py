@@ -72,16 +72,20 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
 
-    search_str = args.keyword
-    search_str = '+'.join(search_str.split(' ')).lower()
+    if args.keyword == None or args.num_urls == None or args.output == None:
+        print("Keyword, number of urls and output file name required.\nType python wiki_extractor.py -h for help.")
 
-    limit = int(args.num_urls)
+    else:
+        search_str = args.keyword
+        search_str = '+'.join(search_str.split(' ')).lower()
 
-    filename = args.output
+        limit = int(args.num_urls)
 
-    if '.json' not in filename :
-        filename+='.json'
+        filename = args.output
 
-    getresult(search_str, limit, filename)
+        if not filename.endswith('.json') :
+            filename+='.json'
 
-    print('Data saved in {}'.format(filename))
+        getresult(search_str, limit, filename)
+
+        print('Data saved in {}'.format(filename))
